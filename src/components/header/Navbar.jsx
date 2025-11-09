@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import BoxContainer from "../../utilities/BoxContainer";
 import { Link } from "react-router";
+import { AuthContext } from "../../contexts/AuthContext";
+import { FaRegUser } from "react-icons/fa6";
+import MyLink from "./MyLink";
 
 const Navbar = () => {
+  const { user, signOutUser, loading } = useContext(AuthContext);
+  // const navigate = useNavigate();
+
+  const photoURL = () => {
+    if (!loading) {
+      if (user) {
+        return true;
+      }
+    }
+  };
+  const isValidPhoto = photoURL();
+  const handleSignOut = () => {
+    signOutUser();
+  };
+
   return (
     <>
       <BoxContainer className="">
@@ -34,10 +52,16 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a>Item 1</a>
+                  <MyLink to="/">Home</MyLink>
                 </li>
                 <li>
-                  <a>Item 3</a>
+                  <MyLink to="findpartner">Find Partner</MyLink>
+                </li>
+                <li>
+                  <MyLink to="partnerprofile">Create Partner Profile</MyLink>
+                </li>
+                <li>
+                  <MyLink to="myconnection">My Connection</MyLink>
                 </li>
               </ul>
             </div>
@@ -46,45 +70,68 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <a>Item 1</a>
+                <MyLink to="/">Home</MyLink>
               </li>
               <li>
-                <a>Item 3</a>
+                <MyLink to="findpartner">Find Partner</MyLink>
+              </li>
+              <li>
+                <MyLink to="partnerprofile">Create Partner Profile</MyLink>
+              </li>
+              <li>
+                <MyLink to="myconnection">My Connection</MyLink>
               </li>
             </ul>
           </div>
           <div className="navbar-end">
-            <div className="space-x-2">
-              <a className="btn">Login</a>
-              <Link to="register" className="btn">
-                Register
-              </Link>
-            </div>
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
-                </div>
+            {!user ? (
+              <div className="space-x-2">
+                <Link to="login" className="btn">
+                  Login
+                </Link>
+                <Link to="register" className="btn">
+                  Register
+                </Link>
               </div>
-              <ul
-                tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <a className="justify-between">Profile</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div>
+            ) : (
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    {isValidPhoto ? (
+                      user.photoURL ? (
+                        <img
+                          src={user.photoURL}
+                          alt=""
+                          className="w-10 h-10 rounded-full"
+                        />
+                      ) : (
+                        <FaRegUser />
+                      )
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+                <ul
+                  tabIndex="-1"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <Link to="user-info" className="justify-between">
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <a onClick={handleSignOut}>Logout</a>
+                  </li>
+                </ul>
+                {/* {user && <p> {user.displayName}</p>} */}
+              </div>
+            )}
           </div>
         </div>
       </BoxContainer>
