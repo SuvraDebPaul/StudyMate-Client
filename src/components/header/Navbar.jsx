@@ -1,5 +1,6 @@
 import React from "react";
 import BoxContainer from "../../utilities/BoxContainer";
+import { Link } from "react-router";
 
 const Navbar = () => {
   return (
@@ -55,7 +56,9 @@ const Navbar = () => {
           <div className="navbar-end">
             <div className="space-x-2">
               <a className="btn">Login</a>
-              <a className="btn">Register</a>
+              <Link to="register" className="btn">
+                Register
+              </Link>
             </div>
             <div className="dropdown dropdown-end">
               <div
