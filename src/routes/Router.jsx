@@ -45,6 +45,9 @@ const Router = createBrowserRouter([
         path: "user-info",
         element: <UserInfo></UserInfo>,
       },
+      {
+        path:"partner/:id",
+      }
     ],
   },
 ]);

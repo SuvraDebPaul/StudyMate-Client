@@ -54,7 +54,7 @@ const CreatePartnerProfile = () => {
       </h2>
       <div className="w-4xl mx-auto ">
         <form onSubmit={handleFromSubmit}>
-          <div className="flex justify-between max-w-4xl mx-auto border p-4 shadow-md gap-4 mb-4">
+          <div className="flex justify-between max-w-4xl mx-auto p-4 shadow-md gap-4 mb-4">
             <div className="flex-1 space-y-4">
               <fieldset className="fieldset">
                 <label className="label text-lg text-stone-700 font-semibold">

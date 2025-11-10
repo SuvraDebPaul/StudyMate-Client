@@ -1,24 +1,54 @@
 // import React, { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Slider from "../components/slider/Slider";
 import { AuthContext } from "../contexts/AuthContext";
+import api from "../api/axios";
+import BoxContainer from "../utilities/BoxContainer";
+import PartnerCard from "../components/partnersCard/PartnerCard";
+import HowItWorks from "../components/extraSection/HowItWorks";
+import Testimonials from "../components/extraSection/Testimonials";
 
 const Home = () => {
-  // const { user } = useContext(AuthContext);
-  // useEffect(() => {
-  //   if (!user) return;
-  //   fetch("http://localhost:3000/partners", {
-  //     headers: {
-  //       authorization: `Bearer ${user.accessToken}`,
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // }, [user]);
+  const { user } = useContext(AuthContext);
+  const [partners, setPartners] = useState([]);
+  useEffect(() => {
+    if (!user) return;
+
+    const getAllPartners = async () => {
+      try {
+        const res = await api.get("partners", {
+          headers: {
+            authorization: `Bearer ${user.accessToken}`,
+          },
+        });
+        const sortedPartners = res.data
+          .sort((a, b) => b.rating - a.rating)
+          .slice(0, 6);
+        setPartners(sortedPartners);
+        console.log(sortedPartners);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getAllPartners();
+  }, [user]);
 
   return (
-    <div>
+    <>
       <Slider></Slider>
-    </div>
+      <BoxContainer>
+        <h2 className="mt-16 text-4xl font-bold uppercase text-center">
+          Top Study <span className="text-secondary">Partner</span>
+        </h2>
+        <div className="grid grid-cols-3 gap-4 mt-10">
+          {partners.map((partner) => (
+            <PartnerCard key={partner._id} partner={partner} />
+          ))}
+        </div>
+        <HowItWorks></HowItWorks>
+        <Testimonials></Testimonials>
+      </BoxContainer>
+    </>
   );
 };
 

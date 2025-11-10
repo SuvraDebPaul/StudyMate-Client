@@ -1,17 +1,23 @@
 import React from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 const MyLink = ({ children, to }) => {
   return (
-    <Link
+    <NavLink
       to={to}
       className={({ isActive }) => {
-        return `${isActive ? "text-primary font-semibold" : "font-medium"}`;
+        return `${isActive ? "text-primary font-bold" : ""}`;
       }}
     >
       {children}
-    </Link>
+    </NavLink>
   );
 };
 
 export default MyLink;
+
+// {({ isActive }) => {
+//         return `${
+//           isActive ? "text-primary font-semibold" : "font-medium text-3xl"
+//         }`;
+//       }}
