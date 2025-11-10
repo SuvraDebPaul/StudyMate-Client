@@ -112,7 +112,7 @@ const Navbar = () => {
                         <FaRegUser />
                       )
                     ) : (
-                      ""
+                      "https://i.ibb.co.com/HDvMs58y/user-avatar-male-5.png"
                     )}
                   </div>
                 </div>

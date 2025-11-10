@@ -6,7 +6,7 @@ const MyLink = ({ children, to }) => {
     <Link
       to={to}
       className={({ isActive }) => {
-        return `${isActive ? "text-primary font-semibold" : ""}`;
+        return `${isActive ? "text-primary font-semibold" : "font-medium"}`;
       }}
     >
       {children}
