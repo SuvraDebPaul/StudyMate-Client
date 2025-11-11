@@ -68,7 +68,12 @@ const Navbar = () => {
                 )}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">StudyMate</a>
+            <Link
+              to="/"
+              className="btn btn-ghost text-xl text-secondary font-black"
+            >
+              StudyMate
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
@@ -85,7 +90,7 @@ const Navbar = () => {
               )}
               {user && (
                 <li>
-                  <MyLink to="myconnection">My Connection</MyLink>
+                  <MyLink to={`myconnection`}>My Connection</MyLink>
                 </li>
               )}
             </ul>

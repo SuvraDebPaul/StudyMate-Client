@@ -47,7 +47,7 @@ const PartnerDetails = () => {
       const newPartnerRequest = {
         userid: userId,
         email: userEmail,
-        name: partner.name,
+        name: partner.fullName,
         profileImage: partner.profileImage,
         subjec: partner.subject,
         studyMode: partner.studyMode,
