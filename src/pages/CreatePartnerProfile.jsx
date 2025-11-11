@@ -41,7 +41,7 @@ const CreatePartnerProfile = () => {
     try {
       const res = await api.post("partners", partnerProfile);
       console.log("Success:", res.data);
-      alert("Partner added successfully!");
+      toast.success("Partner Profile added successfully!");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
     }

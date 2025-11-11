@@ -28,7 +28,7 @@ const PartnerCard = ({ partner }) => {
           <IoStar key={i} size={20} color="orange" />
         ))}
       </p>
-      <Link to={`partner/${partner._id}`} className="btn btn-primary w-full">
+      <Link to={`/partner/${partner._id}`} className="btn btn-primary w-full">
         View Profile
       </Link>
     </div>

@@ -1,7 +1,5 @@
-// import React, { useContext, useEffect } from "react";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "../components/slider/Slider";
-import { AuthContext } from "../contexts/AuthContext";
 import api from "../api/axios";
 import BoxContainer from "../utilities/BoxContainer";
 import PartnerCard from "../components/partnersCard/PartnerCard";
@@ -9,29 +7,22 @@ import HowItWorks from "../components/extraSection/HowItWorks";
 import Testimonials from "../components/extraSection/Testimonials";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
   const [partners, setPartners] = useState([]);
   useEffect(() => {
-    if (!user) return;
-
     const getAllPartners = async () => {
       try {
-        const res = await api.get("partners", {
-          headers: {
-            authorization: `Bearer ${user.accessToken}`,
-          },
-        });
+        const res = await api.get("partners");
         const sortedPartners = res.data
           .sort((a, b) => b.rating - a.rating)
           .slice(0, 6);
         setPartners(sortedPartners);
-        console.log(sortedPartners);
+        // console.log(sortedPartners);
       } catch (error) {
         console.error(error);
       }
     };
     getAllPartners();
-  }, [user]);
+  }, []);
 
   return (
     <>
@@ -53,3 +44,9 @@ const Home = () => {
 };
 
 export default Home;
+
+// {
+//           headers: {
+//             authorization: `Bearer ${user.accessToken}`,
+//           },
+// }

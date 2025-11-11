@@ -8,7 +8,6 @@ import MyLink from "./MyLink";
 const Navbar = () => {
   const { user, signOutUser, loading } = useContext(AuthContext);
   // const navigate = useNavigate();
-
   const photoURL = () => {
     if (!loading) {
       if (user) {
@@ -49,7 +48,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-11 mt-3 w-52 p-2 shadow"
               >
                 <li>
                   <MyLink to="/">Home</MyLink>
@@ -57,12 +56,16 @@ const Navbar = () => {
                 <li>
                   <MyLink to="findpartner">Find Partner</MyLink>
                 </li>
-                <li>
-                  <MyLink to="partnerprofile">Create Partner Profile</MyLink>
-                </li>
-                <li>
-                  <MyLink to="myconnection">My Connection</MyLink>
-                </li>
+                {user && (
+                  <li>
+                    <MyLink to="partnerprofile">Create Partner Profile</MyLink>
+                  </li>
+                )}
+                {user && (
+                  <li>
+                    <MyLink to="myconnection">My Connection</MyLink>
+                  </li>
+                )}
               </ul>
             </div>
             <a className="btn btn-ghost text-xl">StudyMate</a>
@@ -75,12 +78,16 @@ const Navbar = () => {
               <li>
                 <MyLink to="findpartner">Find Partner</MyLink>
               </li>
-              <li>
-                <MyLink to="partnerprofile">Create Partner Profile</MyLink>
-              </li>
-              <li>
-                <MyLink to="myconnection">My Connection</MyLink>
-              </li>
+              {user && (
+                <li>
+                  <MyLink to="partnerprofile">Create Partner Profile</MyLink>
+                </li>
+              )}
+              {user && (
+                <li>
+                  <MyLink to="myconnection">My Connection</MyLink>
+                </li>
+              )}
             </ul>
           </div>
           <div className="navbar-end">
@@ -129,9 +136,9 @@ const Navbar = () => {
                     <a onClick={handleSignOut}>Logout</a>
                   </li>
                 </ul>
-                {/* {user && <p> {user.displayName}</p>} */}
               </div>
             )}
+            {user && <p className="ml-2"> {user.displayName}</p>}
           </div>
         </div>
       </BoxContainer>

@@ -9,6 +9,8 @@ import Loader from "../utilities/Loader";
 import CreatePartnerProfile from "../pages/CreatePartnerProfile";
 import MyConnection from "../pages/MyConnection";
 import UserInfo from "../pages/UserInfo";
+import PartnerDetails from "../pages/PartnerDetails";
+import PrivateRoute from "../provider/PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -35,19 +37,32 @@ const Router = createBrowserRouter([
       },
       {
         path: "partnerprofile",
-        element: <CreatePartnerProfile></CreatePartnerProfile>,
+        element: (
+          <PrivateRoute>
+            <CreatePartnerProfile></CreatePartnerProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myconnection",
-        element: <MyConnection></MyConnection>,
+        element: (
+          <PrivateRoute>
+            <MyConnection></MyConnection>
+          </PrivateRoute>
+        ),
       },
       {
         path: "user-info",
         element: <UserInfo></UserInfo>,
       },
       {
-        path:"partner/:id",
-      }
+        path: "partner/:id",
+        element: (
+          <PrivateRoute>
+            <PartnerDetails></PartnerDetails>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
