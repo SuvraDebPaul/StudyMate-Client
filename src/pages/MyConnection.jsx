@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import api from "../api/axios";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
@@ -7,6 +7,8 @@ import BoxContainer from "../utilities/BoxContainer";
 const MyConnection = () => {
   const { user } = useContext(AuthContext);
   const [connections, setConnections] = useState([]);
+  const [selectedConnection, setSelectedConnection] = useState(null);
+  const modalRef = useRef(null);
 
   useEffect(() => {
     const getRequestByEmail = async () => {
@@ -23,16 +25,26 @@ const MyConnection = () => {
   //console.log(connections);
 
   // Handle update
-  const handleUpdate = (id) => {
+  const handleUpdate = async (id) => {
     console.log("Update ID:", id);
-    // logic for updating
+    try {
+      const result = await api.get(`/requests/${id}`);
+      console.log(result);
+      setSelectedConnection(result.data);
+
+      if (modalRef.current) {
+        modalRef.current.showModal();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Handle delete
   const handleDelete = async (id) => {
-    console.log(id);
+    //console.log(id);
     try {
-      await api.delete(`/requests/${id}`); // assuming your backend supports delete
+      await api.delete(`/requests/${id}`);
       setConnections(connections.filter((c) => c._id !== id));
       const userId = connections[0].userid;
       const result = await api.get(`partners/${userId}`);
@@ -49,6 +61,37 @@ const MyConnection = () => {
     } catch (err) {
       //console.error(error);
       toast.error("Failed to delete connection", err);
+    }
+  };
+
+  const updateConnection = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const updatedName = form[0].value;
+    const updatedStudyMode = form[1].value;
+    const updatedSubject = form[2].value;
+    //console.log(updatedName, updatedStudyMode, updatedSubject);
+    try {
+      const res = await api.patch(`/requests/${selectedConnection._id}`, {
+        name: updatedName,
+        studyMode: updatedStudyMode,
+        subjec: updatedSubject,
+      });
+      //console.log(res.data);
+      const { data: updated } = await api.get(
+        `/requests/${selectedConnection._id}`
+      );
+      setConnections((prevConnections) =>
+        prevConnections.map((conn) =>
+          conn._id === selectedConnection._id ? updated : conn
+        )
+      );
+      toast.success("Connection updated successfully");
+      modalRef.current?.close();
+      form.reset();
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to update connection");
     }
   };
 
@@ -107,6 +150,66 @@ const MyConnection = () => {
           </table>
         </div>
       </div>
+      {/* Modal Code */}
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+      <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          {console.log(selectedConnection)}
+
+          <form onSubmit={updateConnection}>
+            <h3 className="font-bold text-lg">Update Connection</h3>
+            <div className="py-4">
+              <label className="label">
+                <span className="label-text font-bold">Full Name:</span>
+              </label>
+              <input
+                type="text"
+                defaultValue={selectedConnection?.name}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="py-4">
+              <label className="label">
+                <span className="label-text font-bold">Study Mode:</span>
+              </label>
+              <select
+                defaultValue={selectedConnection?.studyMode}
+                className="select select-bordered w-full"
+              >
+                <option value="online">Online</option>
+                <option value="offline">Offline</option>
+                <option value="hybrid">Hybrid</option>
+              </select>
+            </div>
+            <div className="py-4">
+              <label className="label">
+                <span className="label-text font-bold">Subject:</span>
+              </label>
+              <input
+                type="text"
+                defaultValue={selectedConnection?.subjec}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="py-4">
+              <button
+                type="submit"
+                className="btn btn-primary text-white w-full"
+              >
+                Update Connection
+              </button>
+            </div>
+          </form>
+
+          {/* Modal Close Button */}
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </BoxContainer>
   );
 };
