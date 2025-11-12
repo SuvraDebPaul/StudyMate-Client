@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { AuthContext } from "../../contexts/AuthContext";
 import { FaRegUser } from "react-icons/fa6";
 import MyLink from "./MyLink";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useContext(AuthContext);
@@ -96,6 +97,10 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="navbar-end">
+            <div className="mr-4">
+              {/* Theme Toggle Component */}
+              <ThemeToggle />
+            </div>
             {!user ? (
               <div className="space-x-2">
                 <Link to="login" className="btn">

@@ -58,7 +58,7 @@ const Login = () => {
         <form className="flex flex-col space-y-4" onSubmit={handleSignIn}>
           {/* Email Input Field */}
           <fieldset className="w-full">
-            <label className="label text-gray-700 font-medium">Email</label>
+            <label className="label font-medium">Email</label>
             <input
               type="email"
               className="input input-bordered w-full"
@@ -70,7 +70,7 @@ const Login = () => {
           </fieldset>
           {/* Password Input Field */}
           <fieldset className="w-full">
-            <label className="label text-gray-700 font-medium">Password</label>
+            <label className="label font-medium">Password</label>
             <input
               type="password"
               className="input input-bordered w-full"
@@ -84,7 +84,7 @@ const Login = () => {
             <Link
               to="/reset"
               state={{ email: userEmail }}
-              className="link link-hover text-sm text-gray-600"
+              className="link link-hover text-sm"
             >
               Forgot password?
             </Link>
@@ -96,7 +96,7 @@ const Login = () => {
           >
             <MdOutlineAlternateEmail /> Login With Email
           </button>
-          <p className="text-center text-gray-700">Or</p>
+          <p className="text-center">Or</p>
         </form>
         <button
           onClick={handleGoogleSignIn}
@@ -105,11 +105,11 @@ const Login = () => {
           <FcGoogle /> Login With Google
         </button>
         {/* Redirect to Signup */}
-        <p className="text-center text-gray-700 mt-4">
+        <p className="text-center mt-4">
           Don’t have an account?
           <Link
             to="/register"
-            className="link link-hover bg-linear-to-r from-[#501794] to-[#3E70A1] bg-clip-text text-transparent font-medium ml-2"
+            className="link link-hover bg-linear-to-r from-[#8468a7] to-[#59acff] bg-clip-text text-transparent font-medium ml-2"
           >
             Sign up
           </Link>

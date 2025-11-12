@@ -73,7 +73,7 @@ const Testimonials = () => {
           >
             {testimonials.map((t, i) => (
               <SwiperSlide key={i}>
-                <div className="bg-stone-50 p-6 rounded-2xl shadow hover:shadow-lg transition h-full flex flex-col">
+                <div className="bg-base-200 p-6 rounded-2xl shadow hover:shadow-lg transition h-full flex flex-col">
                   <div className="flex items-center gap-4 mb-4">
                     <img
                       src={t.img}
@@ -82,10 +82,10 @@ const Testimonials = () => {
                     />
                     <div>
                       <h3 className="text-lg font-semibold">{t.name}</h3>
-                      <p className="text-gray-500 text-sm">{t.subject}</p>
+                      <p className="text-sm">{t.subject}</p>
                     </div>
                   </div>
-                  <p className="text-gray-700 mb-4">{t.review}</p>
+                  <p className="text-gray-500 mb-4">{t.review}</p>
                   <div className="flex text-yellow-400">
                     {Array.from({ length: 5 }).map((_, idx) => (
                       <span key={idx}>★</span>

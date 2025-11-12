@@ -81,7 +81,7 @@ const Register = () => {
         >
           {/* Name Input Field */}
           <fieldset className="w-full">
-            <label className="label text-gray-700 font-medium">Name</label>
+            <label className="label font-medium">Name</label>
             <input
               type="text"
               className="input input-bordered w-full"
@@ -92,7 +92,7 @@ const Register = () => {
           </fieldset>
           {/* Email Input Field */}
           <fieldset className="w-full">
-            <label className="label text-gray-700 font-medium">Email</label>
+            <label className="label font-medium">Email</label>
             <input
               type="email"
               className="input input-bordered w-full"
@@ -103,7 +103,7 @@ const Register = () => {
           </fieldset>
           {/* Password Input Field */}
           <fieldset className="w-full">
-            <label className="label text-gray-700 font-medium">Password</label>
+            <label className="label font-medium">Password</label>
             <input
               type="password"
               className="input input-bordered w-full"
@@ -118,7 +118,7 @@ const Register = () => {
           </fieldset>
           {/* Photo URL Input Field */}
           <fieldset className="w-full">
-            <label className="label text-gray-700 font-medium">Photo URL</label>
+            <label className="label font-medium">Photo URL</label>
             <input
               type="text"
               className="input input-bordered w-full"
@@ -139,11 +139,11 @@ const Register = () => {
             Register
           </button>
           {/* Redirect to Signup */}
-          <p className="text-center text-gray-700 mt-4">
+          <p className="text-center mt-4">
             Already have an account?
             <Link
               to="/login"
-              className="link link-hover bg-linear-to-r from-[#501794] to-[#3E70A1] bg-clip-text text-transparent font-medium ml-2"
+              className="link link-hover bg-linear-to-r from-[#af8ed6] to-[#6fb1f3] bg-clip-text text-transparent font-medium ml-2"
             >
               Log In
             </Link>

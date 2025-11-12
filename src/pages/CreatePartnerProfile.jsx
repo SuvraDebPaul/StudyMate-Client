@@ -48,18 +48,16 @@ const CreatePartnerProfile = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-center text-4xl font-bold mt-10 mb-5">
-        Create a <span className="text-purple-500">Profile</span>
+    <div className="my-10 mb-20">
+      <h2 className="text-center text-4xl font-bold mt-10 mb-5 uppercase">
+        Create a <span className="text-secondary">Profile</span>
       </h2>
       <div className="w-4xl mx-auto ">
         <form onSubmit={handleFromSubmit}>
           <div className="flex justify-between max-w-4xl mx-auto p-4 shadow-md gap-4 mb-4">
             <div className="flex-1 space-y-4">
               <fieldset className="fieldset">
-                <label className="label text-lg text-stone-700 font-semibold">
-                  Name
-                </label>
+                <label className="label text-lg font-semibold">Name</label>
                 <input
                   type="text"
                   className="input w-full"
@@ -68,9 +66,7 @@ const CreatePartnerProfile = () => {
                 />
               </fieldset>
               <fieldset className="fieldset">
-                <label className="label text-lg text-stone-700 font-semibold">
-                  Subject
-                </label>
+                <label className="label text-lg font-semibold">Subject</label>
                 <input
                   type="text"
                   className="input w-full"
@@ -79,7 +75,7 @@ const CreatePartnerProfile = () => {
                 />
               </fieldset>
               <fieldset className="fieldset">
-                <label className="label text-lg text-stone-700 font-semibold">
+                <label className="label text-lg font-semibold">
                   Availability Time
                 </label>
                 <div className="flex items-center justify-between gap-4">
@@ -94,7 +90,7 @@ const CreatePartnerProfile = () => {
                 </div>
               </fieldset>
               <fieldset className="fieldset flex items-center">
-                <label className="label text-lg text-stone-700 font-semibold mr-4">
+                <label className="label text-lg font-semibold mr-4">
                   Study Mode:
                 </label>
                 <div className="flex gap-4 items-center w-full">
@@ -116,7 +112,7 @@ const CreatePartnerProfile = () => {
                 </div>
               </fieldset>
               <fieldset className="fieldset flex items-center gap-4">
-                <label className="label text-lg text-stone-700 font-semibold block">
+                <label className="label text-lg font-semibold block">
                   Connections Count :
                 </label>
                 <input
@@ -130,9 +126,7 @@ const CreatePartnerProfile = () => {
             </div>
             <div className="flex-1 space-y-4">
               <fieldset className="fieldset">
-                <label className="label text-lg text-stone-700 font-semibold">
-                  Email
-                </label>
+                <label className="label text-lg font-semibold">Email</label>
                 <input
                   type="email"
                   className="input w-full"
@@ -143,7 +137,7 @@ const CreatePartnerProfile = () => {
                 />
               </fieldset>
               <fieldset className="fieldset">
-                <label className="label text-lg text-stone-700 font-semibold">
+                <label className="label text-lg font-semibold">
                   Profile Image
                 </label>
                 <label className="input w-full">
@@ -152,7 +146,7 @@ const CreatePartnerProfile = () => {
                 </label>
               </fieldset>
               <fieldset className="fieldset">
-                <label className="label text-lg text-stone-700 font-semibold block">
+                <label className="label text-lg font-semibold block">
                   Experience
                 </label>
                 <label className="select w-full">
@@ -165,7 +159,7 @@ const CreatePartnerProfile = () => {
                 </label>
               </fieldset>
               <fieldset className="fieldset flex items-center gap-4">
-                <label className="label text-lg text-stone-700 font-semibold block">
+                <label className="label text-lg font-semibold block">
                   Rating:
                 </label>
                 <div className="rating">
@@ -208,7 +202,7 @@ const CreatePartnerProfile = () => {
                 </div>
               </fieldset>
               <fieldset className="fieldset flex items-center gap-4">
-                <label className="label text-lg text-stone-700 font-semibold inline-block">
+                <label className="label text-lg font-semibold inline-block">
                   Location:
                 </label>
                 <label className="input w-full">

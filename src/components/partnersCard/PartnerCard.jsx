@@ -4,7 +4,7 @@ import { IoStar } from "react-icons/io5";
 
 const PartnerCard = ({ partner }) => {
   return (
-    <div className="p-4 shadow-md space-y-2 bg-stone-50 hover:-translate-y-1 duration-300 transition-all ease-in-out">
+    <div className="p-4 shadow-md space-y-2 bg-base-200 hover:-translate-y-1 duration-300 transition-all ease-in-out">
       <img
         className="w-full rounded-md hover:scale-105 duration-300 transition-all ease-in-out"
         src={partner.profileImage}
