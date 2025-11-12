@@ -8,6 +8,7 @@ import {
   signOut,
   updateProfile,
   reload,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config.js";
 import { useEffect, useState } from "react";
@@ -40,6 +41,10 @@ const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   const signOutUser = () => {
     setLoading(true);
     return signOut(auth);
@@ -67,6 +72,7 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     signOutUser,
     signInUserGoogle,
+    resetPassword,
   };
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };

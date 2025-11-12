@@ -11,6 +11,7 @@ import MyConnection from "../pages/MyConnection";
 import UserInfo from "../pages/UserInfo";
 import PartnerDetails from "../pages/PartnerDetails";
 import PrivateRoute from "../provider/PrivateRoute";
+import PasswordReset from "../pages/PasswordReset";
 
 const Router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const Router = createBrowserRouter([
             <PartnerDetails></PartnerDetails>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "reset",
+        element: <PasswordReset></PasswordReset>,
       },
     ],
   },
