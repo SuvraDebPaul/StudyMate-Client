@@ -9,6 +9,9 @@ const MyConnection = () => {
   const [connections, setConnections] = useState([]);
   const [selectedConnection, setSelectedConnection] = useState(null);
   const modalRef = useRef(null);
+  useEffect(() => {
+    document.title = "StudyMate | My Connections";
+  }, []);
 
   useEffect(() => {
     const getRequestByEmail = async () => {

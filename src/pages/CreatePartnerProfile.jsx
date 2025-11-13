@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import api from "../api/axios";
 import Loader from "../utilities/Loader";
@@ -6,8 +6,12 @@ import { toast } from "react-toastify";
 
 const CreatePartnerProfile = () => {
   const { user, loading } = useContext(AuthContext);
+  useEffect(() => {
+    document.title = "StudyMate | Create Profile";
+  }, []);
   if (loading) return <Loader></Loader>;
   // console.log(user);
+
   const handleFromSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;

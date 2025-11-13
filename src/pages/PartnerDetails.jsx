@@ -13,6 +13,9 @@ const PartnerDetails = () => {
   //console.log(id);
 
   useEffect(() => {
+    document.title = "StudyMate | Partner Details";
+  }, []);
+  useEffect(() => {
     const getPartnerById = async () => {
       try {
         const res = await api.get(`partners/${id}`);

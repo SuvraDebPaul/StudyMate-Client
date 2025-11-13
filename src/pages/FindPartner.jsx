@@ -7,6 +7,9 @@ const FindPartner = () => {
   const [allPartners, setAllPartners] = useState([]);
   const [originalPartners, setOriginalPartners] = useState([]);
   const [searchPartner, setSearchPartner] = useState("");
+  useEffect(() => {
+    document.title = "StudyMate | All Partners";
+  }, []);
 
   useEffect(() => {
     const getAllPartners = async () => {

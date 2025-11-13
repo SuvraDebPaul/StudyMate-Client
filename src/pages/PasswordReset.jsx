@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import BoxContainer from "../utilities/BoxContainer";
 import { AuthContext } from "../contexts/AuthContext";
@@ -8,7 +8,10 @@ const PasswordReset = () => {
   const location = useLocation();
   const { resetPassword } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(location.state);
+  // console.log(location.state);
+  useEffect(() => {
+    document.title = "StudyMate | Password Reset";
+  }, []);
 
   const handlePasswordReset = (e) => {
     e.preventDefault();

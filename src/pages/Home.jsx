@@ -9,6 +9,9 @@ import Testimonials from "../components/extraSection/Testimonials";
 const Home = () => {
   const [partners, setPartners] = useState([]);
   useEffect(() => {
+    document.title = "StudyMate | Home";
+  }, []);
+  useEffect(() => {
     const getAllPartners = async () => {
       try {
         const res = await api.get("partners");

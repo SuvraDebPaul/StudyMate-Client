@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import BoxContainer from "../utilities/BoxContainer";
 import Loader from "../utilities/Loader";
 
 const UserInfo = () => {
   const { user, loading } = useContext(AuthContext);
+  useEffect(() => {
+    document.title = "StudyMate | User Info";
+  }, []);
   if (loading) return <Loader></Loader>;
   if (!user) return;
   return (

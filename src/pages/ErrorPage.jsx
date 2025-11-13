@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import errorImg from "../assets/404.jpg";
 import { Link } from "react-router";
 
 const ErrorPage = () => {
+  useEffect(() => {
+    document.title = "StudyMate | Page Not Found";
+  }, []);
   return (
     <div>
       <div className="flex flex-col gap-2 items-center justify-center">
