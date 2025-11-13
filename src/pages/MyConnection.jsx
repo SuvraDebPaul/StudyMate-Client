@@ -19,7 +19,7 @@ const MyConnection = () => {
         const res = await api.get(`requests?email=${user.email}`);
         setConnections(res.data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         toast.error("Failed to fetch connections");
       }
     };
@@ -29,17 +29,17 @@ const MyConnection = () => {
 
   // Handle update
   const handleUpdate = async (id) => {
-    console.log("Update ID:", id);
+    //console.log("Update ID:", id);
     try {
       const result = await api.get(`/requests/${id}`);
-      console.log(result);
+      //console.log(result);
       setSelectedConnection(result.data);
 
       if (modalRef.current) {
         modalRef.current.showModal();
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -52,7 +52,7 @@ const MyConnection = () => {
       const userId = connections[0].userid;
       const result = await api.get(`partners/${userId}`);
       const prevConnection = Number(result.data.connectionCount);
-      console.log(prevConnection);
+      //console.log(prevConnection);
       if (prevConnection >= 0) {
         const updateCount = prevConnection - 1;
         const patch = await api.patch(`partners/${userId}`, {
@@ -93,7 +93,7 @@ const MyConnection = () => {
       modalRef.current?.close();
       form.reset();
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       toast.error("Failed to update connection");
     }
   };
@@ -128,7 +128,7 @@ const MyConnection = () => {
                       className="w-14 h-14 rounded-md bg-stone-200 p-1 object-cover"
                     />
                   </td>
-                  <td>{conn.subject}</td>
+                  <td>{conn.subjec}</td>
                   <td>{conn.studyMode}</td>
                   <td className="space-x-2">
                     <button
@@ -173,7 +173,7 @@ const MyConnection = () => {
                   />
                   <div>
                     <h3 className="font-semibold text-lg">{conn.name}</h3>
-                    <p className="text-sm text-gray-500">{conn.subject}</p>
+                    <p className="text-sm text-gray-500">{conn.subjec}</p>
                   </div>
                 </div>
                 <div className="text-sm text-gray-600 mb-3">
@@ -209,8 +209,6 @@ const MyConnection = () => {
 
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          {console.log(selectedConnection)}
-
           <form onSubmit={updateConnection}>
             <h3 className="font-bold text-lg">Update Connection</h3>
             <div className="py-4">

@@ -45,7 +45,7 @@ const Login = () => {
   };
   const handleEmailInput = (e) => {
     setUserEmail(e.target.value);
-    console.log(userEmail);
+    //console.log(userEmail);
   };
 
   return (

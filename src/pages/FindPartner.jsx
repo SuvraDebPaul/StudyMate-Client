@@ -37,7 +37,7 @@ const FindPartner = () => {
       setAllPartners(sorted);
     }
   };
-  console.log(allPartners);
+  //console.log(allPartners);
   const handleSearchPartner = (e) => {
     e.preventDefault();
     const searchValue = e.target.value.trim().toLowerCase();

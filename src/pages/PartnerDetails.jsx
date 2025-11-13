@@ -42,7 +42,7 @@ const PartnerDetails = () => {
       const result = await api.patch(`partners/${userId}`, {
         connectionCount: updateCount,
       });
-      console.log(result.data);
+     // console.log(result.data);
       setPartner((prev) => ({
         ...prev,
         connectionCount: updateCount,
@@ -56,10 +56,10 @@ const PartnerDetails = () => {
         studyMode: partner.studyMode,
       };
       const postRequest = await api.post("/requests", newPartnerRequest);
-      console.log(postRequest.data);
+     // console.log(postRequest.data);
       toast.success("Partner Profile added successfully!");
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

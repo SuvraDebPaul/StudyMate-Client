@@ -3,9 +3,11 @@ import { AuthContext } from "../contexts/AuthContext";
 import api from "../api/axios";
 import Loader from "../utilities/Loader";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const CreatePartnerProfile = () => {
   const { user, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "StudyMate | Create Profile";
   }, []);
@@ -44,8 +46,9 @@ const CreatePartnerProfile = () => {
 
     try {
       const res = await api.post("partners", partnerProfile);
-      console.log("Success:", res.data);
+      //console.log("Success:", res.data);
       toast.success("Partner Profile added successfully!");
+      navigate("/");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
     }
