@@ -62,7 +62,7 @@ const FindPartner = () => {
         <div className="flex justify-between items-center mb-8">
           <div className="flex-1 mr-4">
             <form>
-              <label className="input w-1/3">
+              <label className="input w-full md:w-1/3">
                 <svg
                   className="h-[1em] opacity-50"
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ const FindPartner = () => {
             </form>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-4">
           {allPartners.map((partner) => (
             <PartnerCard key={partner._id} partner={partner} />
           ))}

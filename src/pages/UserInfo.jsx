@@ -15,13 +15,13 @@ const UserInfo = () => {
       <BoxContainer>
         <section className="my-10 flex">
           <div className="flex-1">
-            <img src={user.photoURL} alt="" className="w-full px-20" />
+            <img src={user.photoURL} alt="" className="w-full px-2 md:px-20" />
           </div>
           <div className="flex-1 space-y-5 mt-10">
-            <p className="text-2xl font-bold">
+            <p className="text-md md:text-2xl font-bold">
               <span>Full Name:</span> {user.displayName}
             </p>
-            <p className="text-2xl font-bold">
+            <p className="text-md md:text-2xl font-bold">
               <span>Email:</span> {user.email}
             </p>
           </div>

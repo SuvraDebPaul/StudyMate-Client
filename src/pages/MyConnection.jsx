@@ -101,8 +101,12 @@ const MyConnection = () => {
   return (
     <BoxContainer>
       <div className="p-4">
-        <h2 className="text-2xl font-semibold mb-4">My Connections</h2>
-        <div className="overflow-x-auto">
+        <h2 className="text-2xl font-semibold mb-4 text-center md:text-left">
+          My Connections
+        </h2>
+
+        {/* Desktop & Tablet View */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="table table-zebra w-full">
             <thead>
               <tr>
@@ -120,11 +124,11 @@ const MyConnection = () => {
                   <td>
                     <img
                       src={conn.profileImage}
-                      alt={conn.fullName}
-                      className="w-15 h-15 rounded-md bg-stone-200 p-1 object-fill"
+                      alt={conn.name}
+                      className="w-14 h-14 rounded-md bg-stone-200 p-1 object-cover"
                     />
                   </td>
-                  <td>{conn.subjec}</td>
+                  <td>{conn.subject}</td>
                   <td>{conn.studyMode}</td>
                   <td className="space-x-2">
                     <button
@@ -152,7 +156,54 @@ const MyConnection = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Mobile View */}
+        <div className="block md:hidden space-y-4">
+          {connections.length > 0 ? (
+            connections.map((conn) => (
+              <div
+                key={conn._id}
+                className="border border-gray-200 rounded-lg p-4 shadow-sm bg-base-100"
+              >
+                <div className="flex items-center space-x-3 mb-3">
+                  <img
+                    src={conn.profileImage}
+                    alt={conn.name}
+                    className="w-16 h-16 rounded-md bg-stone-200 p-1 object-cover"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-lg">{conn.name}</h3>
+                    <p className="text-sm text-gray-500">{conn.subject}</p>
+                  </div>
+                </div>
+                <div className="text-sm text-gray-600 mb-3">
+                  <p>
+                    <span className="font-medium">Study Mode:</span>{" "}
+                    {conn.studyMode}
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <button
+                    className="btn btn-sm btn-primary w-[48%]"
+                    onClick={() => handleUpdate(conn._id)}
+                  >
+                    Update
+                  </button>
+                  <button
+                    className="btn btn-sm btn-error w-[48%]"
+                    onClick={() => handleDelete(conn._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-center text-gray-500">No connections found</p>
+          )}
+        </div>
       </div>
+
       {/* Modal Code */}
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 

@@ -71,7 +71,7 @@ const Navbar = () => {
             </div>
             <Link
               to="/"
-              className="btn btn-ghost text-xl text-secondary font-black"
+              className="btn btn-ghost text-md sm:text-xl text-secondary hidden sm:inline-block font-black"
             >
               StudyMate
             </Link>
@@ -102,11 +102,11 @@ const Navbar = () => {
               <ThemeToggle />
             </div>
             {!user ? (
-              <div className="space-x-2">
-                <Link to="login" className="btn">
+              <div className="space-x-2 flex">
+                <Link to="login" className="btn btn-primary btn-sm">
                   Login
                 </Link>
-                <Link to="register" className="btn">
+                <Link to="register" className="btn btn-secondary btn-sm">
                   Register
                 </Link>
               </div>
@@ -148,7 +148,9 @@ const Navbar = () => {
                 </ul>
               </div>
             )}
-            {user && <p className="ml-2"> {user.displayName}</p>}
+            {user && (
+              <p className="ml-2 hidden sm:inline-block"> {user.displayName}</p>
+            )}
           </div>
         </div>
       </BoxContainer>

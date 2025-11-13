@@ -69,29 +69,33 @@ const PartnerDetails = () => {
       <BoxContainer>
         <section className="my-10 flex">
           <div className="flex-1">
-            <img src={partner.profileImage} alt="" className="w-full px-20" />
+            <img
+              src={partner.profileImage}
+              alt=""
+              className="w-full px-4 lg:px-20"
+            />
           </div>
-          <div className="flex-1 space-y-5 mt-10">
-            <p className="text-2xl font-bold">
+          <div className="flex-1 space-y-2 md:space-y-5 md:mt-10">
+            <p className="text-xl md:text-2xl font-bold">
               <span>Full Name:</span> {partner.fullName}
             </p>
-            <p className="text-2xl font-bold">
+            <p className="text-xl md:text-2xl font-bold">
               <span>Subject:</span> {partner.subject}
             </p>
-            <p className="text-2xl font-bold">
+            <p className="text-xl md:text-2xl font-bold">
               <span>Study Mode:</span> {partner.studyMode}
             </p>
-            <p className="text-2xl font-bold">
+            <p className="text-xl md:text-2xl font-bold">
               <span>Availablity:</span> {convertTime(partner.availableTimeFrom)}{" "}
               - {convertTime(partner.availableTimeTo)}
             </p>
-            <p className="text-2xl font-bold">
+            <p className="text-xl md:text-2xl font-bold">
               <span>Experience Level:</span> {partner.experience}
             </p>
-            <p className="text-2xl font-bold">
+            <p className="text-xl md:text-2xl font-bold">
               <span>Location:</span> {partner.location}
             </p>
-            <p className="text-2xl font-bold flex items-center gap-3">
+            <p className="text-xl md:text-2xl font-bold flex items-center gap-3">
               <span>Rating:</span>{" "}
               <span className="flex items-center gap-2">
                 {Array.from({ length: partner.rating }, (_, i) => (
@@ -99,7 +103,7 @@ const PartnerDetails = () => {
                 ))}
               </span>
             </p>
-            <p className="text-2xl font-bold">
+            <p className="text-xl md:text-2xl font-bold">
               <span>Connection Count:</span> {partner.connectionCount}
             </p>
             <button
