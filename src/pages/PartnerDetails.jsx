@@ -42,11 +42,8 @@ const PartnerDetails = () => {
       const result = await api.patch(`partners/${userId}`, {
         connectionCount: updateCount,
       });
-     // console.log(result.data);
-      setPartner((prev) => ({
-        ...prev,
-        connectionCount: updateCount,
-      }));
+      // console.log(result.data);
+
       const newPartnerRequest = {
         userid: userId,
         email: userEmail,
@@ -56,10 +53,14 @@ const PartnerDetails = () => {
         studyMode: partner.studyMode,
       };
       const postRequest = await api.post("/requests", newPartnerRequest);
-     // console.log(postRequest.data);
+      // console.log(postRequest.data);
       toast.success("Partner Profile added successfully!");
+      setPartner((prev) => ({
+        ...prev,
+        connectionCount: updateCount,
+      }));
     } catch (error) {
-      //console.log(error);
+      toast.error(error?.response?.data?.message || "Something went wrong");
     }
   };
 
