@@ -5,6 +5,12 @@ import BoxContainer from "../utilities/BoxContainer";
 import PartnerCard from "../components/partnersCard/PartnerCard";
 import HowItWorks from "../components/extraSection/HowItWorks";
 import Testimonials from "../components/extraSection/Testimonials";
+import Features from "../components/features/Features";
+import Statistics from "../components/statistics/Statistics";
+import FAQ from "../components/faq/FAQ";
+import Blogs from "../components/blogs/Blogs";
+import Newsletter from "../components/newslatter/Newsletter";
+import CTA from "../components/cat/CTA";
 
 const Home = () => {
   const [partners, setPartners] = useState([]);
@@ -39,8 +45,14 @@ const Home = () => {
             <PartnerCard key={partner._id} partner={partner} />
           ))}
         </div>
+        <Features></Features>
+        <Statistics></Statistics>
         <HowItWorks></HowItWorks>
         <Testimonials></Testimonials>
+        <FAQ></FAQ>
+        <Blogs></Blogs>
+        <Newsletter></Newsletter>
+        <CTA></CTA>
       </BoxContainer>
     </>
   );

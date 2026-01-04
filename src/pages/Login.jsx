@@ -32,7 +32,18 @@ const Login = () => {
         toast.error(e.message);
       });
   };
-
+  const adminLogin = () => {
+    const email = "jhon@gmail.com";
+    const password = "123aA!";
+    signInUser(email, password)
+      .then(() => {
+        toast.success("Login Successfull");
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
   const handleGoogleSignIn = () => {
     signInUserGoogle()
       .then(() => {
@@ -90,6 +101,13 @@ const Login = () => {
             </Link>
           </div>
           {/* Login Button Field */}
+          <button
+            onClick={adminLogin}
+            className="btn w-full border-0 text-gray-100 bg-linear-to-r from-[#501794] to-[#3E70A1]"
+          >
+            <MdOutlineAlternateEmail /> Login With Credentials
+          </button>
+          <hr />
           <button
             type="submit"
             className="btn w-full border-0 text-gray-100 bg-linear-to-r from-[#501794] to-[#3E70A1]"

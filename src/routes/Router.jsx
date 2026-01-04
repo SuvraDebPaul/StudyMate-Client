@@ -12,6 +12,12 @@ import UserInfo from "../pages/UserInfo";
 import PartnerDetails from "../pages/PartnerDetails";
 import PrivateRoute from "../provider/PrivateRoute";
 import PasswordReset from "../pages/PasswordReset";
+import Dashboard from "../pages/dashboard/Dashboard";
+import DashboardPage from "../pages/dashboard/pages/DashboardPage";
+import AllBlogs from "../pages/AllBlogs";
+import BlogDetails from "../components/blogs/BlogDetails";
+import About from "../pages/about";
+import Contact from "../pages/Contact";
 
 const Router = createBrowserRouter([
   {
@@ -37,40 +43,56 @@ const Router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "partnerprofile",
-        element: (
-          <PrivateRoute>
-            <CreatePartnerProfile></CreatePartnerProfile>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "myconnection",
-        element: (
-          <PrivateRoute>
-            <MyConnection></MyConnection>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "user-info",
-        element: (
-          <PrivateRoute>
-            <UserInfo></UserInfo>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "partner/:id",
-        element: (
-          <PrivateRoute>
-            <PartnerDetails></PartnerDetails>
-          </PrivateRoute>
-        ),
+        element: <PartnerDetails></PartnerDetails>,
       },
       {
         path: "reset",
         element: <PasswordReset></PasswordReset>,
+      },
+      {
+        path: "blog",
+        element: <AllBlogs></AllBlogs>,
+      },
+      {
+        path: "blogs/:id",
+        element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "about",
+        element: <About></About>,
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    errorElement: <ErrorPage></ErrorPage>,
+    hydrateFallbackElement: <Loader />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <DashboardPage></DashboardPage>,
+      },
+      {
+        path: "partnerprofile",
+        element: <CreatePartnerProfile></CreatePartnerProfile>,
+      },
+      {
+        path: "myconnection",
+        element: <MyConnection></MyConnection>,
+      },
+      {
+        path: "profile",
+        element: <UserInfo></UserInfo>,
       },
     ],
   },

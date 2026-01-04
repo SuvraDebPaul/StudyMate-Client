@@ -100,10 +100,10 @@ const MyConnection = () => {
 
   return (
     <BoxContainer>
-      <div className="p-4">
-        <h2 className="text-2xl font-semibold mb-4 text-center md:text-left">
+      <div className="py-10">
+        {/* <h2 className="text-2xl font-semibold mb-4 text-center md:text-left">
           My Connections
-        </h2>
+        </h2> */}
 
         {/* Desktop & Tablet View */}
         <div className="hidden md:block overflow-x-auto">

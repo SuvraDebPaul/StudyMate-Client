@@ -55,13 +55,13 @@ const CreatePartnerProfile = () => {
   };
 
   return (
-    <div className="my-10 mb-20">
-      <h2 className="text-center text-2xl md:text-4xl font-bold mt-10 mb-5 uppercase">
+    <div className="my-10">
+      {/* <h2 className="text-2xl md:text-4xl font-bold mt-10 mb-5 uppercase">
         Create a <span className="text-secondary">Profile</span>
-      </h2>
-      <div className="max-w-4xl mx-auto px-10 shadow-md pb-6">
+      </h2> */}
+      <div className="">
         <form onSubmit={handleFromSubmit}>
-          <div className="flex flex-col md:flex-row justify-between max-w-4xl mx-auto p-4 shadow-md gap-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between max-w-5xl ml-10 gap-20 mb-4">
             <div className="flex-1 space-y-4">
               <fieldset className="fieldset">
                 <label className="label text-lg font-semibold">Name</label>
@@ -223,9 +223,11 @@ const CreatePartnerProfile = () => {
               </fieldset>
             </div>
           </div>
-          <button type="submit" className="btn btn-primary w-full">
-            Create Profile
-          </button>
+          <div className="flex justify-center items-center max-w-5xl mt-16">
+            <button type="submit" className="btn btn-primary px-10">
+              Create Profile
+            </button>
+          </div>
         </form>
       </div>
     </div>

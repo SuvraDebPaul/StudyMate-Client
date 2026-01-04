@@ -84,16 +84,15 @@ const Navbar = () => {
               <li>
                 <MyLink to="findpartner">Find Partner</MyLink>
               </li>
-              {user && (
-                <li>
-                  <MyLink to="partnerprofile">Create Partner Profile</MyLink>
-                </li>
-              )}
-              {user && (
-                <li>
-                  <MyLink to={`myconnection`}>My Connection</MyLink>
-                </li>
-              )}
+              <li>
+                <MyLink to="blog">Blogs</MyLink>
+              </li>
+              <li>
+                <MyLink to="about">About</MyLink>
+              </li>
+              <li>
+                <MyLink to="contact">Contact</MyLink>
+              </li>
             </ul>
           </div>
           <div className="navbar-end">
@@ -138,8 +137,8 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
                 >
                   <li>
-                    <Link to="user-info" className="justify-between">
-                      Profile
+                    <Link to="dashboard" className="justify-between">
+                      Dashboard
                     </Link>
                   </li>
                   <li>
